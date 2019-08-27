@@ -1,0 +1,42 @@
+Global:
+	boolean resetState = false;
+	boolean InterruptTrigger = false;
+
+Setup :
+
+	int TimeNow = RTCNow(); // Convert time to Integer
+	int TimeStop = RTCNext(int TimeNow); // to see next trigger time
+	pinMode(34,INPUT);
+	
+
+Loop :
+	attachInterrupt(digitalPinToInterrupt(34),rusak,RISING);
+	while ((RTC(Now) <= TimeStop) && (!InterruptTrigger)) // Ketika InterruptTrigger true, this while function will be passed
+		switch(case)
+			1: //Run the program//
+				case=0
+			2: //Run the program//
+				case=0
+		    X: //Regular Authentication program, Trigger from Smartphone menu//
+				String pinAuth=Serial2.readString();
+				while((pinAuth=NULL)&&(RTC(Now) <= TimeStop) && (!InterruptTrigger))
+					{
+					pinAuth=Serial2.readString();
+					}
+				if (pinAuth==PIN)
+					resetState= true;
+			0: //Empty//
+	
+	if (!resetState)
+		writeKeyEEPROM("Omae wa mou shindeiru!Shindeiru!",32,64);
+	
+	//Code Here to Check the key inside EEPROM//
+	
+	int TimeNow=RTCNow()
+	int TimeStop=RTCNext(int TimeNow);
+	delay(1000);
+			
+ISR Rusak:
+	InterruptTrigger=true;
+	resetState=false;
+	detachInterrupt(34);
